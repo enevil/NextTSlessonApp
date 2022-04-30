@@ -1,9 +1,14 @@
 import Menu from "../Menu/Menu";
 import SidebarProps from "./Sidebar.props";
+import css from "./Sidebar.module.css";
+import cn from "classnames";
+import LogoIcon from "./logo.svg";
 
-const Sidebar = ({ ...rest }: SidebarProps) => {
+const Sidebar = ({className, ...rest }: SidebarProps) => {
 	return (
-		<aside {...rest}>
+		<aside className={cn(className, css["sidebar__block"])} {...rest} >
+			<LogoIcon />
+			<div>поиск</div>
 			<Menu></Menu>
 		</aside>
 	);
