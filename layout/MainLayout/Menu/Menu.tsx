@@ -1,22 +1,11 @@
 import { useContext } from "react";
 import cn from "classnames";
 import { AppContext } from "../../../context/app.context";
-import { FirstLevelMenuItem, PageItem } from "../../../interfaces/menu.interface";
-import { TopLevelCategory } from "../../../interfaces/page.interface";
-import CoursesIcon from "./icons/courses.svg";
-import ServicesIcon from "./icons/services.svg";
-import SchoolIcon from "./icons/school.svg";
-import StudentsIcon from "./icons/students.svg";
+import { PageItem } from "../../../interfaces/menu.interface";
 import css from "./Menu.module.css";
 import Link from "next/link";
 import { useRouter } from "next/router";
-
-const fitstLevelMenuData: FirstLevelMenuItem[] = [
-	{ route: "courses", name: "Курсы", icon: <CoursesIcon />, _id: TopLevelCategory.Courses },
-	{ route: "serives", name: "Сервисы", icon: <ServicesIcon />, _id: TopLevelCategory.Services },
-	{ route: "school", name: "Для школьников", icon: <SchoolIcon />, _id: TopLevelCategory.School },
-	{ route: "students", name: "Для студентов", icon: <StudentsIcon />, _id: TopLevelCategory.Students },
-];
+import { firstLevelMenuData } from "../../../helpers/helpers";
 
 export const Menu = () => {
 	const { menu, setMenu, firstCategory } = useContext(AppContext);
@@ -38,7 +27,7 @@ export const Menu = () => {
 	const buildFirstLevelMenu = () => {
 		return (
 			<ul className={css["first-level-menu"]}>
-				{fitstLevelMenuData.map((flMenuItem) => (
+				{firstLevelMenuData.map((flMenuItem) => (
 					<li key={flMenuItem.route}>
 						<Link href={`/${flMenuItem.route}`}>
 							<a

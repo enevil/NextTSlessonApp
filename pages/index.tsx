@@ -4,8 +4,9 @@ import { Button, HTag, PTag, Rating, Tag } from "../components";
 import { withLayout } from "../layout/MainLayout/MainLayout";
 import axios from "axios";
 import { MenuItem } from "../interfaces/menu.interface";
+import { TopLevelCategory } from "../interfaces/page.interface";
 
-const Home = ({ menu }: HomeProps) => {
+const Home = () => {
 	const [rating, setRating] = useState<number>(2);
 
 	return (
@@ -54,5 +55,5 @@ export const getStaticProps: GetStaticProps<HomeProps> = async () => {
 
 interface HomeProps extends Record<string, unknown> {
 	menu: MenuItem[];
-	firstCategory: number;
+	firstCategory: TopLevelCategory;
 }
