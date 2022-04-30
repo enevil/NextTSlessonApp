@@ -9,7 +9,20 @@ body {
     font-family: var(--font-family);
 }
 
+ul {
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+}
+
+svg {
+    display: block;
+}
+
 a {
+    display: block;
+
     text-decoration: none;
 
     color: inherit;
@@ -39,4 +52,5 @@ button {
     --green-light: #C8F8E4;
     --gray: #B3C0D9;
     --gray-light: #EBEBEB;
+    --gray-dark: #787D85;
 }
