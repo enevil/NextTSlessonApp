@@ -9,8 +9,8 @@ import { firstLevelMenuData } from "../../../helpers/helpers";
 
 export const Menu = () => {
 	const { menu, setMenu, firstCategory } = useContext(AppContext);
-
 	const router = useRouter();
+
 
 	const toogleSecondLevelMenuItem = (secondCategory: string) => {
 		setMenu &&

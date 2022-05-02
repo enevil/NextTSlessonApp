@@ -10,7 +10,7 @@ const Type = ({ firstCategory }: TypeProps) => {
 
 	return (
 		<>
-			{firstCategory}
+            {firstCategory}
 		</>
 	);
 };
@@ -39,9 +39,11 @@ export const getStaticProps: GetStaticProps<TypeProps> = async ({
 			notFound: true,
 		};
 	}
+    console.log("xxx",firstCategoryItem._id);
 	const { data: menu } = await axios.post<MenuItem[]>(process.env.NEXT_ENV_DOMAIN + "api/top-page/find", {
 		firstCategory: firstCategoryItem._id,
 	});
+    console.log(menu[0]._id.secondCategory);
 	return {
 		props: {
 			menu,

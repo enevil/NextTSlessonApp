@@ -1,0 +1,91 @@
+.hh {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    gap: 30px;
+}
+
+.hh__salary-ladder,
+.hh__vacancy {
+    padding: 20px 0;
+}
+
+.hh__salary-ladder {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.hh__salary-step,
+.hh__vacancy {
+    display: grid;
+    justify-content: center;
+    justify-items: center;
+    gap: 10px;
+}
+
+.hh__vacancy {
+    height: 100%;
+}
+
+.hh__salary-ladder .hh__salary-step:nth-child(2) {
+    border-right: 1px solid var(--gray-light);
+    border-left: 1px solid var(--gray-light);
+}
+
+.hh__title {
+    font-size: 20px;
+    font-weight: 300;
+    line-height: 27px;
+}
+
+.hh__salary-amount {
+    color: var(--black);
+
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 35px;
+}
+
+.hh__vacancy-amount {
+    color: var(--primary);
+
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 49px;
+}
+
+.hh__stars-bar {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    gap: 10px;
+}
+
+.star_filled {
+    fill: var(--red);
+}
+
+@media screen and (max-width: 1200px) {
+    .hh {
+        grid-template-columns: auto;
+    }
+}
+
+@media screen and (max-width: 560px) {
+    .hh__salary-ladder {
+        grid-template-columns: auto;
+
+        padding: 0;
+    }
+
+    .hh__vacancy {
+        padding: 20px 0;
+    }
+
+    .hh__salary-step {
+        padding: 20px 0;
+    }
+
+    .hh__salary-ladder .hh__salary-step:nth-child(2) {
+        border-top: 1px solid var(--gray-light);
+        border-bottom: 1px solid var(--gray-light);
+    }
+}

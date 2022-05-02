@@ -6,9 +6,12 @@ import { TopLevelCategory, TopPage } from "../../interfaces/page.interface";
 import { ParsedUrlQuery } from "querystring";
 import { Product } from "../../interfaces/product.interface";
 import { firstLevelMenuData } from "../../helpers/helpers";
+import { TopPageComponent } from "../../page-componenets";
 
-const Course = ({ page  }: CourseProps) => {
-	return <div>{page && page.category}</div>;
+const Course = ({ page, firstCategory, products }: CourseProps) => {
+	return <div>
+		<TopPageComponent firstCategory={firstCategory} products={products} page={page}></TopPageComponent>
+	</div>;
 };
 
 export default withLayout(Course);

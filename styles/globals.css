@@ -4,7 +4,7 @@ body {
     padding: 0;
 
     color: var(--black);
-    background-color: #F5F6F8;
+    background-color: var(--bg);
 
     font-family: var(--font-family);
 }
@@ -42,6 +42,7 @@ button {
 
 :root {
     --font-family: "Noto Sans", sans-serif;
+    --bg: #E5E5E5;
     --black: #3B434E;
     --white: white;
     --primary: #7653FC;

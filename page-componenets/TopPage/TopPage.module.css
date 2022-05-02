@@ -1,0 +1,43 @@
+.top-page__container {
+    margin-top: 35px;
+
+    padding: 0 10px 10px;
+}
+
+.top-page__header {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+
+    align-items: center;
+}
+
+.top-page__count {
+    padding: 0 20px;
+}
+
+.top-page__sort {
+    white-space: nowrap;
+
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 22px;
+}
+
+.top-page__sort span:first-child {
+    margin-right: 45px;
+}
+
+.top-page__salary-title {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    margin-bottom: 20px;
+}
+
+@media screen and (max-width: 560px) {
+    .top-page__header {
+        display: grid;
+        grid-template-columns: auto 1fr;
+    }
+}
