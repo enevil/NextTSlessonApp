@@ -1,0 +1,43 @@
+.advantage {
+    display: grid;
+    grid-template-columns: 50px 1fr;
+    grid-template-rows: 50px 1fr;
+    gap: 15px 40px;
+
+    align-items: center;
+}
+
+.checkmark {
+    display: grid;
+    place-items: center;
+
+    align-self: stretch;
+
+    border-radius: 50%;
+
+    background-color: var(--green-light);
+}
+
+.checkmark svg {
+    fill: var(--green);
+}
+
+.title {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.line {
+    width: 50%;
+    height: 80%;
+
+    margin: auto 0;
+
+    border-right: 1px solid #D2D2D2;
+}
+
+.description {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 15px 40px;
+}

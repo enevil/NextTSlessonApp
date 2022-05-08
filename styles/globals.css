@@ -1,3 +1,7 @@
+* {
+    box-sizing: border-box;
+}
+
 html,
 body {
     margin: 0;
@@ -28,6 +32,13 @@ a {
     color: inherit;
 }
 
+input,
+textarea {
+    border: none;
+
+    font: inherit;
+}
+
 button {
     cursor: pointer;
 
@@ -36,13 +47,9 @@ button {
     font: inherit;
 }
 
-* {
-    box-sizing: border-box;
-}
-
 :root {
     --font-family: "Noto Sans", sans-serif;
-    --bg: #E5E5E5;
+    --bg: #F5F6F8;
     --black: #3B434E;
     --white: white;
     --primary: #7653FC;

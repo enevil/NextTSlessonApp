@@ -1,33 +1,20 @@
-.top-page__container {
-    margin-top: 35px;
-
-    padding: 0 10px 10px;
-}
-
-.top-page__header {
+.header {
     display: grid;
-    grid-template-columns: auto 1fr auto;
+    grid-template-columns: auto auto 1fr;
 
     align-items: center;
 }
 
-.top-page__count {
+.count {
     padding: 0 20px;
 }
 
-.top-page__sort {
-    white-space: nowrap;
-
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 22px;
+.product-block {
+    display: grid;
+    gap: 20px;
 }
 
-.top-page__sort span:first-child {
-    margin-right: 45px;
-}
-
-.top-page__salary-title {
+.salary-title {
     display: flex;
     align-items: center;
     gap: 20px;
@@ -35,9 +22,52 @@
     margin-bottom: 20px;
 }
 
+.advantages-block {
+    margin-top: 20px;
+    padding: 15px;
+
+    border-radius: 10px;
+    background: var(--white);
+}
+
+.advantages-block ul li {
+    margin-bottom: 30px;
+}
+
+.description-block {
+    padding: 15px;
+}
+
+.description-block h2 {
+    margin: 15px 0;
+
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 30px;
+}
+
+.description-block h3 {
+    margin: 15px 0;
+
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 27px;
+}
+
+.description-block a {
+    display: inline;
+}
+
+.skills-block {
+    display: flex;
+    flex-wrap: wrap;
+
+    margin-top: 20px;
+    gap: 10px;
+}
+
 @media screen and (max-width: 560px) {
-    .top-page__header {
-        display: grid;
-        grid-template-columns: auto 1fr;
+    .container {
+        padding: 0 10px 10px;
     }
 }

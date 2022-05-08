@@ -1,0 +1,31 @@
+.sort {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 45px;
+
+    white-space: nowrap;
+}
+
+.sort > span {
+    display: flex;
+    gap: 5px;
+    justify-items: center;
+
+    cursor: pointer;
+}
+
+.sort svg {
+    display: none;
+}
+
+.active {
+    color: var(--primary);
+
+    font-weight: 700;
+}
+
+.active svg {
+    display: block;
+    fill: var(--primary);
+}

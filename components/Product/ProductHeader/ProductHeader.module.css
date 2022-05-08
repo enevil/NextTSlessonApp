@@ -1,0 +1,59 @@
+.container {
+    display: grid;
+    grid-template-columns:
+        [start] 70px [logoend] 30px [titlestart] 1fr [pricestart]
+        auto [priceend] 40px [creditstart] auto [creditend] 60px [raingstart] auto [end];
+}
+
+.logo {
+    grid-column: start / logoend;
+    grid-row: span 2;
+}
+
+.logo img {
+    border-radius: 5px;
+}
+
+.categories,
+.title {
+    grid-column: titlestart / pricestart;
+}
+
+.price,
+.price-title {
+    grid-column: pricestart / priceend;
+}
+
+.credit,
+.credit-title {
+    grid-column: creditstart / creditend;
+}
+
+.rating,
+.rating-title {
+    grid-column: raingstart / end;
+}
+
+.categories {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.text-m {
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 27px;
+}
+
+.text-s {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 19px;
+}
+
+.press-down {
+    display: flex;
+    align-items: flex-end;
+}
