@@ -9,3 +9,7 @@
     font-weight: 300;
     line-height: 27px;
 }
+
+.bg-gray {
+    background-color: var(--gray-card);
+}

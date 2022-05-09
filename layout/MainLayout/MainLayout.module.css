@@ -29,7 +29,7 @@
     grid-area: footer;
 }
 
-@media screen and (max-width: 760px) {
+@media screen and (max-width: 870px) {
     .container {
         grid-template:
             "header" auto
@@ -47,6 +47,12 @@
     }
 
     .main {
-        padding: 0 15px;
+        padding: 0 10px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .main {
+        padding: 5px;
     }
 }

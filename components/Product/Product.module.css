@@ -1,4 +1,4 @@
-.container {
+.product {
     display: grid;
     grid-template-rows: auto 40px auto 40px auto;
 
@@ -9,4 +9,34 @@
     height: 50%;
 
     border-bottom: 1px solid var(--gray-light);
+}
+
+.reviews {
+    overflow: hidden;
+
+    height: 0;
+
+    padding: 0;
+}
+
+.reviews-active {
+    overflow: auto;
+
+    height: auto;
+
+    padding: 30px;
+}
+
+.reviews > div {
+    margin-bottom: 30px;
+
+    padding-bottom: 20px;
+
+    border-bottom: 1px solid var(--gray-light);
+}
+
+@media screen and (max-width: 400px) {
+    .container {
+        padding: 0;
+    }
 }

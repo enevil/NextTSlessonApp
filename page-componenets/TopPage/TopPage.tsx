@@ -20,7 +20,7 @@ export const TopPageComponent = ({ page, products, className }: TopPageProps) =>
         <div className={css['count']}>
           <Tag color="gray">{products.length}</Tag>
         </div>
-        <SortSwitch state={sortState} setState={(state) => dispatchSort({ type: state })} />
+        <SortSwitch className={css['sort']} state={sortState} setState={(state) => dispatchSort({ type: state })} />
       </div>
 
       <section className={css['product-block']}>

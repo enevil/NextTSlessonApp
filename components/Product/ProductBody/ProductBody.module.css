@@ -43,3 +43,15 @@
     font-size: 16px;
     font-weight: 700;
 }
+
+@media screen and (max-width: 1250px) {
+    .characteristics {
+        padding: 0;
+
+        grid-column: span 2;
+    }
+
+    .advantages {
+        grid-column: span 2;
+    }
+}

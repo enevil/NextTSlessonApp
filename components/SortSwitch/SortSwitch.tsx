@@ -3,9 +3,9 @@ import css from './SortSwitch.module.css';
 import SortSwitchProps, { SortState } from './SortSwitch.props';
 import SortIcon from './sort.svg';
 
-export const SortSwitch = ({ state = SortState.Rating, setState }: SortSwitchProps) => {
+export const SortSwitch = ({ className, state = SortState.Rating, setState }: SortSwitchProps) => {
   return (
-    <div className={css.sort}>
+    <div className={cn(className, css.sort)}>
       <span onClick={() => setState(SortState.Rating)} className={cn({ [css.active]: state === SortState.Rating })}>
         <SortIcon />
         По рейтингу

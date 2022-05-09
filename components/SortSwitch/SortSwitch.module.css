@@ -1,7 +1,5 @@
 .sort {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-end;
     gap: 45px;
 
     white-space: nowrap;

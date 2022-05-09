@@ -1,8 +1,10 @@
 .header {
     display: grid;
-    grid-template-columns: auto auto 1fr;
+    grid-template-columns: auto 1fr auto;
 
     align-items: center;
+
+    margin-bottom: 20px;
 }
 
 .count {
@@ -66,8 +68,13 @@
     gap: 10px;
 }
 
-@media screen and (max-width: 560px) {
-    .container {
-        padding: 0 10px 10px;
+@media screen and (max-width: 670px) {
+    .header {
+        grid-template-columns: auto auto;
+        row-gap: 20px;
+    }
+
+    .sort {
+        grid-column: span 2;
     }
 }

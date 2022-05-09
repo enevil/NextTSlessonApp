@@ -6,4 +6,8 @@
     outline-color: var(--primary);
     background-color: var(--white);
     box-shadow: 0 4px 4px rgb(0 0 0 / 5%);
+
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 22px;
 }
