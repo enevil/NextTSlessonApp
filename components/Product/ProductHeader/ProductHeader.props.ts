@@ -9,4 +9,5 @@ export default interface ProductHeaderProps extends DetailedHTMLProps<HTMLAttrib
   credit: number;
   initialRating: number;
   reviewCount: number;
+  openReview: () => void;
 }

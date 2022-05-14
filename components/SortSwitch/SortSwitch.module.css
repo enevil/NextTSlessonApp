@@ -14,16 +14,11 @@
 }
 
 .sort svg {
-    display: none;
+    fill: var(--primary);
 }
 
 .active {
     color: var(--primary);
 
     font-weight: 700;
-}
-
-.active svg {
-    display: block;
-    fill: var(--primary);
 }

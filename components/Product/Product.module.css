@@ -12,18 +12,6 @@
 }
 
 .reviews {
-    overflow: hidden;
-
-    height: 0;
-
-    padding: 0;
-}
-
-.reviews-active {
-    overflow: auto;
-
-    height: auto;
-
     padding: 30px;
 }
 

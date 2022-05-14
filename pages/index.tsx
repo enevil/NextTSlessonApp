@@ -6,6 +6,7 @@ import axios from 'axios';
 import { MenuItem } from '../interfaces/menu.interface';
 import { TopLevelCategory } from '../interfaces/page.interface';
 import { Textarea } from '../components/Textarea/Textarea';
+import { API } from '../helpers/api';
 
 const Home = () => {
   const [rating, setRating] = useState<number>(2);
@@ -45,7 +46,7 @@ export default withLayout(Home);
 
 export const getStaticProps: GetStaticProps<HomeProps> = async () => {
   const firstCategory = 0;
-  const { data: menu } = await axios.post<MenuItem[]>(process.env.NEXT_ENV_DOMAIN + '/api/top-page/find', {
+  const { data: menu } = await axios.post<MenuItem[]>(API.topPage.find, {
     firstCategory,
   });
   return {

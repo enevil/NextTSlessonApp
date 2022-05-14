@@ -1,5 +1,4 @@
 import { FirstLevelMenuItem } from '../interfaces/menu.interface';
-
 import CoursesIcon from './icons/courses.svg';
 import ServicesIcon from './icons/services.svg';
 import SchoolIcon from './icons/school.svg';
@@ -23,4 +22,14 @@ export const applyDeclension = (num: number, declensions: [string, string, strin
   if ((num % 10 > 4 && num % 10 < 10) || num % 10 === 0 || (num > 9 && num < 21)) return declensions[2];
   if (num % 10 === 1) return declensions[0];
   return declensions[1];
+};
+
+export const useErrorMesage = (errorType: string | undefined): string | null => {
+  if (!errorType) return null;
+  switch (errorType) {
+    case 'required':
+      return 'Заполните поле';
+    default:
+      return null;
+  }
 };

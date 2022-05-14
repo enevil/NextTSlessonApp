@@ -1,17 +1,34 @@
 import cn from 'classnames';
-import { HTag, Tag, AdvantageCard, Card, HhData, SortSwitch, Product } from '../../components';
+import { HTag, Tag, AdvantageCard, Card, HhData, SortSwitch, Product, ButtonIcon } from '../../components';
 import css from './TopPage.module.css';
 import { TopPageProps } from './TopPageProps';
 import parseHTML from 'html-react-parser';
-import { useReducer } from 'react';
+import { useEffect, useReducer } from 'react';
 import { SortState } from '../../components/SortSwitch/SortSwitch.props';
 import { sortReducer } from './sort.reducer';
+import { useScrollY } from '../../hooks/useScrollY';
+import { useAnimation } from 'framer-motion';
 
 export const TopPageComponent = ({ page, products, className }: TopPageProps) => {
+  // SORT
   const [{ sort: sortState, products: sortedProducts }, dispatchSort] = useReducer(sortReducer, {
     products,
     sort: SortState.Rating,
   });
+  useEffect(() => {
+    dispatchSort({ type: 'UPDATE', payload: products });
+    dispatchSort({ type: sortState });
+  }, [products]);
+
+  // SCROLL UP
+  const y = useScrollY();
+  const controls = useAnimation();
+  useEffect(() => {
+    controls.start({ opacity: y / document.body.scrollHeight });
+  }, [y, controls]);
+  const goUp = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   return (
     <div className={cn(css['container'], className)}>
@@ -24,8 +41,8 @@ export const TopPageComponent = ({ page, products, className }: TopPageProps) =>
       </div>
 
       <section className={css['product-block']}>
-        {sortedProducts.slice(0, 2).map((p) => (
-          <Product key={p._id} product={p} />
+        {sortedProducts.map((p) => (
+          <Product key={p._id} product={p} layout />
         ))}
       </section>
 
@@ -71,6 +88,8 @@ export const TopPageComponent = ({ page, products, className }: TopPageProps) =>
           </ul>
         </div>
       )}
+
+      <ButtonIcon appearance="primary" icon="up" initial={false} animate={controls} onClick={goUp} />
     </div>
   );
 };

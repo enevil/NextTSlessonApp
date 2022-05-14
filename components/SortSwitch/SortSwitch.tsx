@@ -7,11 +7,12 @@ export const SortSwitch = ({ className, state = SortState.Rating, setState }: So
   return (
     <div className={cn(className, css.sort)}>
       <span onClick={() => setState(SortState.Rating)} className={cn({ [css.active]: state === SortState.Rating })}>
-        <SortIcon />
+        {state === SortState.Rating && <SortIcon />}
         По рейтингу
       </span>
+
       <span onClick={() => setState(SortState.Price)} className={cn({ [css.active]: state === SortState.Price })}>
-        <SortIcon />
+        {state === SortState.Price && <SortIcon />}
         По цене
       </span>
     </div>

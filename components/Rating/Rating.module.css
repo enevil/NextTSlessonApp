@@ -13,3 +13,25 @@
 .editable {
     cursor: pointer;
 }
+
+.error svg {
+    animation: blink 1s;
+}
+
+.message {
+    display: block;
+
+    margin-top: 5px;
+
+    color: var(--red);
+}
+
+@keyframes blink {
+    50% {
+        fill: var(--red);
+    }
+
+    100% {
+        fill: var(--gray-light);
+    }
+}

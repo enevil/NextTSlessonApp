@@ -1,25 +1,96 @@
 import cn from 'classnames';
-import css from './ReviewForm.module.css';
+import axios from 'axios';
+import { useState } from 'react';
 import ReviewFormProps from './ReviewForm.props';
-import { Rating, Input, Textarea, Button } from '../..';
+import css from './ReviewForm.module.css';
+import CrossIcon from './cross.svg';
+import { Controller, useForm } from 'react-hook-form';
+import { ReviewFormData } from './ReviewForm.inerface';
+import { API } from '../../../helpers/api';
+import { Rating, Input, Textarea, Button, PTag } from '../..';
 
-export const ReviewForm = ({ className, ...rest }: ReviewFormProps) => {
+export const ReviewForm = ({ productId, className, ...rest }: ReviewFormProps) => {
+  const {
+    register,
+    control,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm<ReviewFormData>();
+
+  const [requestError, setRequestError] = useState('');
+  const [isSuccess, setIsSuccess] = useState(false);
+
+  const closeRequestNotify = () => {
+    setRequestError('');
+    setIsSuccess(false);
+  };
+
+  const onSubmit = async (formData: ReviewFormData) => {
+    console.log(formData);
+    try {
+      const { status } = await axios.post(API.review.createDemo, { productId, ...formData });
+      if (status === 201) {
+        setIsSuccess(true);
+        reset();
+        return;
+      }
+      console.log(status);
+      setRequestError('Что-то пошло не так');
+    } catch (error) {
+      console.log(error);
+      setRequestError('Что-то пошло не так');
+    }
+  };
+
   return (
-    <form className={cn(className, css['container'])} {...rest}>
+    <form onSubmit={handleSubmit(onSubmit)} className={cn(className, css['container'])} {...rest}>
       <div className={css['inputs']}>
-        <Input placeholder="Имя" />
-        <Input placeholder="Заголовок отзыва" />
+        <Input
+          className={css['input']}
+          placeholder="Имя"
+          {...register('name', { required: true })}
+          error={errors.name}
+        />
+        <Input
+          className={css['input']}
+          placeholder="Заголовок отзыва"
+          {...register('title', { required: true })}
+          error={errors.title}
+        />
       </div>
       <div className={css['rating']}>
         <span>Оценка:</span>
-        <Rating rating={0} isEditable={true}></Rating>
+        <Controller
+          control={control}
+          name="rating"
+          rules={{ required: true }}
+          render={({ field }) => (
+            <Rating rating={field.value} isEditable setRating={field.onChange} error={errors.rating} />
+          )}
+        />
       </div>
-      <Textarea placeholder="Текст отзыва" className={css['textarea']} />
+      <Textarea
+        {...register('description', { required: true })}
+        placeholder="Текст отзыва"
+        className={css['textarea']}
+        error={errors.description}
+      />
       <div className={css['panel']}>
         <Button className={css['submit']} type="submit" appearance="primary">
           Отправить
         </Button>
         <span>* Перед публикацией отзыв пройдет предварительную модерацию и проверку</span>
+      </div>
+      <div className={cn(css['response'], { [css['error']]: !!requestError, [css['success']]: isSuccess })}>
+        <PTag>
+          {isSuccess
+            ? 'Ваш отзыв успешно отправлен. Он будет опубликован, после того, как пройдет модерацию'
+            : requestError}
+        </PTag>
+        <button className={css['cross']} type="button" onClick={closeRequestNotify}>
+          <CrossIcon />
+        </button>
       </div>
     </form>
   );

@@ -44,15 +44,7 @@
 }
 
 .third-level-menu {
-    display: none;
-}
-
-.third-level-menu_active {
-    display: grid;
-
-    margin-top: 10px;
-    margin-bottom: 20px;
-    gap: 10px;
+    overflow: hidden;
 }
 
 .third-level-menu__item {

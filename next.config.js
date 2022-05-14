@@ -1,4 +1,7 @@
 const nextConfig = {
+  experimental: {
+    styledComponents: true,
+  },
   images: {
     domains: ['courses-top.ru'],
   },

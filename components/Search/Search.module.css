@@ -2,8 +2,7 @@
     position: relative;
 }
 
-.input {
-    width: 100%;
+.input input {
     padding-right: 35px;
 }
 

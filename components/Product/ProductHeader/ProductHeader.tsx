@@ -15,6 +15,7 @@ export const ProductHeader = ({
   categories,
   reviewCount,
   className,
+  openReview,
   ...rest
 }: ProductHeaderProps) => {
   return (
@@ -34,30 +35,29 @@ export const ProductHeader = ({
           ))}
         </div>
       </div>
-      <div className={css['price-block']}>
-        <div className={css['price']}>
-          <div className={cn(css['text-m'])}>
-            <span className={css['current-price']}>{parsePrice(price)}</span>
-            <Tag size="s" color="green">{`-${parsePrice(oldPrice - price)}`}</Tag>
-          </div>
-          <div className={css['text-s']}>цена</div>
+      <div className={css['stats']}>
+        <div className={cn(css['price'], css['text-m'])}>
+          <span className={css['current-price']}>{parsePrice(price)}</span>
+          <Tag size="s" color="green">{`-${parsePrice(oldPrice - price)}`}</Tag>
         </div>
 
-        <div className={css['credit']}>
-          <div className={cn(css['text-m'])}>
-            <span className={css['credit-price']}>{parsePrice(credit)}</span>
-            <span className={css['month']}>/мес</span>
-          </div>
-          <div className={css['text-s']}>в кредит</div>
+        <div className={cn(css['credit'], css['text-m'])}>
+          <span className={css['credit-price']}>{parsePrice(credit)}</span>
+          <span className={css['month']}>/мес</span>
         </div>
 
         <div className={css['rating']}>
           <Rating rating={initialRating} />
-          <div className={css['text-s']}>{`${reviewCount} ${applyDeclension(reviewCount, [
+        </div>
+
+        <div className={cn(css['price-title'], css['text-s'])}>цена</div>
+        <div className={cn(css['credit-title'], css['text-s'])}>в кредит</div>
+        <div className={cn(css['rating-title'], css['text-s'])}>
+          <a href="#ref" onClick={() => openReview()}>{`${reviewCount} ${applyDeclension(reviewCount, [
             'отзыв',
             'отзыва',
             'отзывов',
-          ])}`}</div>
+          ])}`}</a>
         </div>
       </div>
     </div>

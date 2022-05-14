@@ -25,28 +25,35 @@
     grid-column: titlestart / end;
 }
 
-.price-block {
+.stats {
     display: grid;
-    align-content: flex-start;
-    justify-content: flex-start;
-    grid-template-columns: [start] auto [priceend] 40px [creditstart] auto [creditend] 60px [raingstart] auto [end];
-}
-
-.price {
-    grid-column: start / priceend;
-}
-
-.credit {
-    grid-column: creditstart / creditend;
-}
-
-.rating {
-    grid-column: raingstart / end;
+    align-self: start;
+    grid-template-columns: [start] auto [priceend] 40px [creditstart] auto [creditend] 60px [raitngstart] auto [end];
 }
 
 .price,
-.credit {
+.price-title {
+    grid-column: start / priceend;
+}
+
+.credit,
+.credit-title {
+    grid-column: creditstart / creditend;
+}
+
+.rating,
+.rating-title {
+    grid-column: raitngstart / end;
+}
+
+.price,
+.credit,
+.rating {
     white-space: nowrap;
+}
+
+.rating-title a:hover {
+    color: var(--primary);
 }
 
 .categories {
@@ -76,17 +83,36 @@
 }
 
 @media screen and (max-width: 670px) {
-    .price-block {
-        align-content: stretch;
-        justify-content: stretch;
-        row-gap: 10px;
+    .stats {
+        display: grid;
+        grid-template-columns: none;
+        row-gap: 15px;
+
+        align-items: center;
+        justify-content: space-between;
     }
 
     .price,
     .credit,
     .rating {
-        display: flex;
-        justify-content: space-between;
-        grid-column: span 4;
+        grid-column: 1/2;
+    }
+
+    .price-title,
+    .credit-title,
+    .rating-title {
+        grid-column: 2/3;
+    }
+
+    .price-title {
+        grid-row: 1/2;
+    }
+
+    .credit-title {
+        grid-row: 2/3;
+    }
+
+    .rating-title {
+        grid-row: 3/4;
     }
 }

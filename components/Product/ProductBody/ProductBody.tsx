@@ -26,12 +26,14 @@ export const ProductBody = ({
           ))}
         </ul>
       </div>
-      <div className={css['advantages']}>
-        <div className={css['advantages-block']}>
-          <div className={cn(css['advantages-title'], css['text-m'])}>Преимущества</div>
-          <PTag>{advantages}</PTag>
+      {advantages && (
+        <div className={css['advantages']}>
+          <div className={css['advantages-block']}>
+            <div className={cn(css['advantages-title'], css['text-m'])}>Преимущества</div>
+            <PTag>{advantages}</PTag>
+          </div>
         </div>
-      </div>
+      )}
       <div className={css['tags']}>
         {tags.map((i) => (
           <Tag key={i} size="s" color="ghost">
