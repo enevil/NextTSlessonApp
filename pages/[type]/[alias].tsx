@@ -5,7 +5,7 @@ import { MenuItem } from '../../interfaces/menu.interface';
 import { TopLevelCategory, TopPage } from '../../interfaces/page.interface';
 import { ParsedUrlQuery } from 'querystring';
 import { Product } from '../../interfaces/product.interface';
-import { firstLevelMenuData } from '../../helpers/helpers';
+import { firstLevelMenuData } from '../../helpers/menu';
 import { TopPageComponent } from '../../page-componenets';
 import { API } from '../../helpers/api';
 

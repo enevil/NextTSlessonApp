@@ -89,7 +89,14 @@ export const TopPageComponent = ({ page, products, className }: TopPageProps) =>
         </div>
       )}
 
-      <ButtonIcon appearance="primary" icon="up" initial={false} animate={controls} onClick={goUp} />
+      <ButtonIcon
+        className={css['up-button']}
+        appearance="primary"
+        icon="up"
+        initial={false}
+        animate={controls}
+        onClick={goUp}
+      />
     </div>
   );
 };

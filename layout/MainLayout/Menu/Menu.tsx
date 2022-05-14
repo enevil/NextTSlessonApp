@@ -6,7 +6,7 @@ import { useRouter } from 'next/router';
 import { motion } from 'framer-motion';
 import { AppContext } from '../../../context/app.context';
 import { PageItem } from '../../../interfaces/menu.interface';
-import { firstLevelMenuData } from '../../../helpers/helpers';
+import { firstLevelMenuData } from '../../../helpers/menu';
 
 export const Menu = () => {
   const { menu, setMenu, firstCategory } = useContext(AppContext);

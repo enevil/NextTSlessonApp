@@ -36,10 +36,11 @@
             "main" 1fr
             "footer" auto
             / minmax(320px, 1fr);
+        row-gap: 0;
     }
 
     .header {
-        display: block;
+        display: flex;
     }
 
     .sidebar {

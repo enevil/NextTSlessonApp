@@ -1,3 +1,7 @@
+.container {
+    position: relative;
+}
+
 .header {
     display: grid;
     grid-template-columns: auto 1fr auto;
@@ -66,6 +70,12 @@
 
     margin-top: 20px;
     gap: 10px;
+}
+
+.up-button {
+    position: fixed;
+    right: 20px;
+    bottom: 80px;
 }
 
 @media screen and (max-width: 670px) {
