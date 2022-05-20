@@ -21,7 +21,7 @@ export const Header = ({ className, ...rest }: HeaderProps) => {
     <header className={cn(css.container, className)} {...rest}>
       <LogoIcon />
       <ButtonIcon appearance="white" icon="burger" onClick={() => setSidebar(true)} />
-      <AnimatePresence>
+      <AnimatePresence initial={false}>
         {isSidebarOpen && (
           <MotionSidebar initial={{ x: '100%' }} animate={{ x: 0 }} exit={{ x: '-100%' }} className={css.sidebar} />
         )}

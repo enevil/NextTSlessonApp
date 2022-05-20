@@ -1,9 +1,6 @@
 const nextConfig = {
-  experimental: {
-    styledComponents: true,
-  },
   images: {
-    domains: ['courses-top.ru'],
+    domains: ['courses-top.ru', 'courses-top.ruhttp'],
   },
   reactStrictMode: true,
   webpack(config) {

@@ -1,14 +1,17 @@
 import axios from 'axios';
 import { GetStaticPaths, GetStaticProps, GetStaticPropsContext } from 'next';
+import Error from 'next/error';
 import { ParsedUrlQuery } from 'querystring';
 import { API } from '../../helpers/api';
 import { firstLevelMenuData } from '../../helpers/menu';
 import { MenuItem } from '../../interfaces/menu.interface';
 import { TopLevelCategory } from '../../interfaces/page.interface';
 import { withLayout } from '../../layout/MainLayout/MainLayout';
+import { TypePage } from '../../page-componenets/TypePage/TypePage';
 
-const Type = ({ firstCategory }: TypeProps) => {
-  return <>{firstCategory}</>;
+const Type = ({ firstCategory, menu }: TypeProps) => {
+  if (menu === undefined || firstCategory === undefined) return <Error statusCode={404} />;
+  return <TypePage firstCategory={firstCategory} menu={menu} />;
 };
 
 export default withLayout(Type);

@@ -5,7 +5,11 @@
     white-space: nowrap;
 }
 
-.sort > span {
+.title {
+    display: none;
+}
+
+.sort > button {
     display: flex;
     gap: 5px;
     justify-items: center;

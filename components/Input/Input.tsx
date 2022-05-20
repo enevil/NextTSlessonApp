@@ -9,8 +9,12 @@ export const Input = forwardRef(({ error, className, ...rest }: InputProps, ref:
 
   return (
     <div className={cn(className)}>
-      <input className={cn(css.input, { [css.error]: error })} ref={ref} {...rest} />
-      {errorMesage && <span className={css.message}>{errorMesage}</span>}
+      <input className={cn(css.input, { [css.error]: error })} ref={ref} aria-invalid={!!errorMesage} {...rest} />
+      {errorMesage && (
+        <span className={css.message} role={'alert'}>
+          {errorMesage}
+        </span>
+      )}
     </div>
   );
 });

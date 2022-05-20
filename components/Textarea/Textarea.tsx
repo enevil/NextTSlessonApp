@@ -9,8 +9,17 @@ export const Textarea = forwardRef(
     const errorMesage = useErrorMesage(error?.type);
     return (
       <div className={cn(className, css.container)}>
-        <textarea className={cn(css.textarea, { [css.error]: error })} ref={ref} {...rest} />
-        {errorMesage && <span className={css.message}>{errorMesage}</span>}
+        <textarea
+          className={cn(css.textarea, { [css.error]: error })}
+          ref={ref}
+          aria-invalid={!!errorMesage}
+          {...rest}
+        />
+        {errorMesage && (
+          <span className={css.message} role={'alert'}>
+            {errorMesage}
+          </span>
+        )}
       </div>
     );
   }

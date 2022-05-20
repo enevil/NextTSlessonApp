@@ -24,8 +24,9 @@ export const Search = ({ className, ...rest }: SearchProps) => {
         onKeyDown={(e) => {
           if (e.key === 'Enter') executeSearch();
         }}
+        aria-label="Поиск по сайту"
       />
-      <Button onClick={executeSearch} className={css.button} appearance="primary">
+      <Button onClick={executeSearch} className={css.button} appearance="primary" aria-label="Поиск по сайту">
         <LoupeIcon />
       </Button>
     </div>

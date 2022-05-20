@@ -11,10 +11,15 @@ import { firstLevelMenuData } from '../../../helpers/menu';
 export const Menu = () => {
   const { menu, setMenu, firstCategory } = useContext(AppContext);
   const router = useRouter();
+  const { alias } = router.query;
 
   const thirdLevelVariants = {
-    hidden: { margin: 0 },
-    visible: { marginBottom: 20, transition: { staggerChildren: 0.05 } },
+    hidden: { margin: 0, height: 0 },
+    visible: {
+      marginBottom: 20,
+      height: 'auto',
+      transition: { when: 'beforeChildren', staggerChildren: 0.05 },
+    },
   };
 
   const endLinksVariants = {
@@ -60,29 +65,38 @@ export const Menu = () => {
     return (
       <div className={css['second-level-menu']}>
         <ul className={css['second-level-menu__block']}>
-          {menu.map((slMenuItem) => (
-            <li key={slMenuItem._id.secondCategory} className={css['second-level-menu__item']}>
-              <span onClick={() => toogleSecondLevelMenuItem(slMenuItem._id.secondCategory)}>
-                {slMenuItem._id.secondCategory}
-              </span>
-              {buildThirdLevelMenu(slMenuItem.pages, route, slMenuItem.isOpenned || false)}
-            </li>
-          ))}
+          {menu.map((slMenuItem) => {
+            if (typeof alias === 'string') {
+              if (slMenuItem.pages.map((p) => p.alias).includes(alias)) slMenuItem.isOpenned = true;
+            }
+            return (
+              <li key={slMenuItem._id.secondCategory} className={css['second-level-menu__item']}>
+                <button
+                  onKeyDown={(e) => {
+                    if (e.code === 'Enter' || e.code === 'Space') {
+                      e.preventDefault();
+                      toogleSecondLevelMenuItem(slMenuItem._id.secondCategory);
+                    }
+                  }}
+                  onClick={() => toogleSecondLevelMenuItem(slMenuItem._id.secondCategory)}
+                  aria-expanded={slMenuItem.isOpenned || false}
+                >
+                  {slMenuItem._id.secondCategory}
+                </button>
+                {buildThirdLevelMenu(slMenuItem.pages, route, slMenuItem.isOpenned || false)}
+              </li>
+            );
+          })}
         </ul>
       </div>
     );
   };
 
   const buildThirdLevelMenu = (pages: PageItem[], route: string, isOpenned: boolean) => {
-    const alias = router.query.alias;
-    if (Array.isArray(alias) || !alias) {
-      return;
-    }
-    const isStartMenu = pages.map((p) => p.alias).includes(alias);
     return (
       <motion.ul
-        initial={false}
-        animate={isOpenned || isStartMenu ? 'visible' : 'hidden'}
+        initial={isOpenned ? 'visible' : 'hidden'}
+        animate={isOpenned ? 'visible' : 'hidden'}
         variants={thirdLevelVariants}
         className={cn(css['third-level-menu'])}
       >
@@ -90,9 +104,11 @@ export const Menu = () => {
           <motion.li key={tlMenuItem._id} variants={endLinksVariants}>
             <Link href={`/${route}/${tlMenuItem.alias}`}>
               <a
+                tabIndex={isOpenned ? 0 : -1}
                 className={cn(css['third-level-menu__item'], {
                   [css['third-level-menu__item_active']]: tlMenuItem.alias === alias,
                 })}
+                aria-current={tlMenuItem.alias === alias}
               >
                 {tlMenuItem.category}
               </a>

@@ -15,6 +15,7 @@ export const ReviewForm = ({ productId, className, ...rest }: ReviewFormProps) =
     control,
     handleSubmit,
     reset,
+    clearErrors,
     formState: { errors },
   } = useForm<ReviewFormData>();
 
@@ -27,7 +28,6 @@ export const ReviewForm = ({ productId, className, ...rest }: ReviewFormProps) =
   };
 
   const onSubmit = async (formData: ReviewFormData) => {
-    console.log(formData);
     try {
       const { status } = await axios.post(API.review.createDemo, { productId, ...formData });
       if (status === 201) {
@@ -75,20 +75,21 @@ export const ReviewForm = ({ productId, className, ...rest }: ReviewFormProps) =
         placeholder="Текст отзыва"
         className={css['textarea']}
         error={errors.description}
+        aria-label="Текст отзыва"
       />
       <div className={css['panel']}>
-        <Button className={css['submit']} type="submit" appearance="primary">
+        <Button className={css['submit']} type="submit" appearance="primary" onClick={() => clearErrors()}>
           Отправить
         </Button>
         <span>* Перед публикацией отзыв пройдет предварительную модерацию и проверку</span>
       </div>
       <div className={cn(css['response'], { [css['error']]: !!requestError, [css['success']]: isSuccess })}>
-        <PTag>
+        <PTag role={'alert'}>
           {isSuccess
             ? 'Ваш отзыв успешно отправлен. Он будет опубликован, после того, как пройдет модерацию'
             : requestError}
         </PTag>
-        <button className={css['cross']} type="button" onClick={closeRequestNotify}>
+        <button className={css['cross']} type="button" onClick={closeRequestNotify} aria-label="Скрыть оповещение">
           <CrossIcon />
         </button>
       </div>

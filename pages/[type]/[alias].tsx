@@ -1,6 +1,9 @@
 import { GetStaticPaths, GetStaticProps, GetStaticPropsContext } from 'next';
-import { withLayout } from '../../layout/MainLayout/MainLayout';
+import Head from 'next/head';
 import axios from 'axios';
+import Error from 'next/error';
+
+import { withLayout } from '../../layout/MainLayout/MainLayout';
 import { MenuItem } from '../../interfaces/menu.interface';
 import { TopLevelCategory, TopPage } from '../../interfaces/page.interface';
 import { ParsedUrlQuery } from 'querystring';
@@ -10,7 +13,19 @@ import { TopPageComponent } from '../../page-componenets';
 import { API } from '../../helpers/api';
 
 const Course = ({ page, firstCategory, products }: CourseProps) => {
-  return <TopPageComponent firstCategory={firstCategory} products={products} page={page} />;
+  if (page === undefined || firstCategory === undefined || products === undefined) return <Error statusCode={404} />;
+  return (
+    <>
+      <Head>
+        <title>{page.metaTitle}</title>
+        <meta name="description" content={page.metaDescription} />
+        <meta property="og:title" content={page.metaTitle} />
+        <meta property="og:description" content={page.metaDescription} />
+        <meta property="og:type" content="article" />
+      </Head>
+      <TopPageComponent firstCategory={firstCategory} products={products} page={page} />
+    </>
+  );
 };
 
 export default withLayout(Course);

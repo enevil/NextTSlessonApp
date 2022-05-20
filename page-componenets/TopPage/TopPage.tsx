@@ -35,7 +35,10 @@ export const TopPageComponent = ({ page, products, className }: TopPageProps) =>
       <div className={css['header']}>
         <HTag tag="h1">{`Курсы ${page.categoryOn}`}</HTag>
         <div className={css['count']}>
-          <Tag color="gray">{products.length}</Tag>
+          <Tag aria-label={`Всего найденных курсов - ${products.length}`} color="gray">
+            <span className="visually-hidden">Всего найденных курсов</span>
+            {products.length}
+          </Tag>
         </div>
         <SortSwitch className={css['sort']} state={sortState} setState={(state) => dispatchSort({ type: state })} />
       </div>
@@ -46,13 +49,15 @@ export const TopPageComponent = ({ page, products, className }: TopPageProps) =>
         ))}
       </section>
 
-      <section className={css['salary']}>
-        <div className={css['salary-title']}>
-          <HTag tag="h2">{`Вакансии - ${page.category}`}</HTag>
-          <Tag color="red">hh.ru</Tag>
-        </div>
-        <HhData data={page.hh} />
-      </section>
+      {page.hh && (
+        <section className={css['salary']}>
+          <div className={css['salary-title']}>
+            <HTag tag="h2">{`Вакансии - ${page.category}`}</HTag>
+            <Tag color="red">hh.ru</Tag>
+          </div>
+          <HhData data={page.hh} />
+        </section>
+      )}
 
       {page.advantages[0]?.description && (
         <section className={css['advantages']}>

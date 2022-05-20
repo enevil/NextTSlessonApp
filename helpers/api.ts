@@ -1,4 +1,4 @@
-const DOMAIN = 'https://courses-top.ru';
+export const DOMAIN = 'https://courses-top.ru';
 
 export const API = {
   product: {

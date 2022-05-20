@@ -27,6 +27,8 @@ svg {
 a {
     display: block;
 
+    cursor: pointer;
+
     text-decoration: none;
 
     color: inherit;
@@ -40,11 +42,41 @@ textarea {
 }
 
 button {
+    padding: 0;
+
     cursor: pointer;
+    text-transform: inherit;
 
     border: none;
+    background-color: inherit;
 
     font: inherit;
+
+    font-size: inherit;
+    font-weight: inherit;
+}
+
+h1 {
+    margin: 0;
+
+    font-size: 36px;
+}
+
+h2 {
+    margin: 0;
+
+    font-size: 28px;
+}
+
+.visually-hidden {
+    position: absolute;
+
+    overflow: hidden;
+
+    width: 0;
+    height: 0;
+
+    white-space: nowrap;
 }
 
 :root {
@@ -52,13 +84,13 @@ button {
     --bg: #F5F6F8;
     --black: #3B434E;
     --white: white;
-    --primary: #7653FC;
+    --primary: #7351F5;
     --primary-hover: #6642F7;
     --red: #FC836D;
     --red-bright: #DE0000;
-    --green: #1DC37E;
-    --green-light: #C8F8E4;
-    --gray: #B3C0D9;
+    --green: #055A37;
+    --green-light: #D0FBE9;
+    --gray: #676D77;
     --gray-light: #EBEBEB;
     --gray-card: #F9F8FF;
     --gray-dark: #787D85;

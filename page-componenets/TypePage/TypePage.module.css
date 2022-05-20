@@ -1,0 +1,33 @@
+.container {
+    position: relative;
+}
+
+.card-container {
+    column-count: 3;
+    column-gap: 20px;
+}
+
+.card {
+    margin-bottom: 20px;
+
+    page-break-inside: avoid;
+
+    padding: 15px;
+}
+
+.h1 {
+    margin-bottom: 20px;
+}
+
+.h2 {
+    margin-bottom: 15px;
+}
+
+.link {
+    font-size: 18px;
+    font-weight: 300;
+}
+
+.link:hover {
+    color: var(--primary);
+}
